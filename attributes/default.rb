@@ -9,7 +9,7 @@ if platform_family?("debian")
 elsif platform_family?("rhel")
   default['bind9']['packages'] = %w{ bind bind-utils }
   default['bind9']['service_name'] = "named"
-  default['bind9']['dir']   = "/etc/"
+  default['bind9']['dir']   = "/etc/named/"
   default['bind9']['user']  = "named"
   default['bind9']['group'] = "named"
   default['bind9']['sysconfig']= "/etc/sysconfig/named"
