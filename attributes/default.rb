@@ -18,7 +18,6 @@ end
 default['bind9']['zonedir'] = "#{node['bind9']['dir']}zones"
 default['bind9']['id'] = Hash.new
 default['bind9']['viewacl']['noview'] = "noview"
-
 ########################
 # Keys - RNDC is very critical to bind normal operation so we used a pre-generated key - PLEAS CHANGE THIS KEY BEFOR USING IT!!!!!!!
 ########################

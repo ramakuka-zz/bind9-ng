@@ -29,9 +29,11 @@ view "<%= view %>-view" {
 				<% if !node['bind9']['keys'][view].nil? %>
 		allow-transfer { key <%= "#{view}-key" %>;};
 				<% end %>
+				<% if !!node[:bind9][:notify] %>
 					<% if !!node[:bind9][:notify][view] %>
 		also-notify {<% node[:bind9][:notify][view].each do |addr| %> <%= addr %>; <% end %> };
 					<% end %>
+				<% end %>
 				<% when "forward" %>
 		forwarders { <%= value %> };
 				<% when "slave" %>
