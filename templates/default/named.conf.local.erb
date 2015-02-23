@@ -28,6 +28,7 @@ view "<%= view %>-view" {
 		file "<%=node[:bind9][:zonedir]%>/<%= zone %><% if view != "noview" %>.<%= view %><% end%>";
 				<% if !node['bind9']['keys'][view].nil? %>
 		allow-transfer { key <%= "#{view}-key" %>;};
+		allow-update { key <%= "#{view}-key" %>;};
 				<% end %>
 				<% if !!node[:bind9][:notify] %>
 					<% if !!node[:bind9][:notify][view] %>
