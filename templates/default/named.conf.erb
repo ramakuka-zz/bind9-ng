@@ -18,7 +18,7 @@ include "<%=node["bind9"]["dir"]%>named.conf.servers";
 include "<%=node["bind9"]["dir"]%>named.conf.keys";
 <% end %>
 <% if node[:bind9][:channle].is_a?(Hash) %>
-include "<%=node["bind9"]["dir"]%>named.conf.channles";
+include "<%=node["bind9"]["dir"]%>named.conf.channels";
 <% end %>
 include "<%=node["bind9"]["dir"]%>named.conf.options";
 include "<%=node["bind9"]["dir"]%>named.conf.log";
