@@ -20,21 +20,14 @@ directory node[:bind9][:zonedir] do
   group node['bind9']['group']
 end
 
-if platform_family?("debian")
-  cookbook_file node['bind9']['sysconfig']  do
-    owner "root"
-    group "root"
-    mode "0755"
-    action :create
-  end
-elsif platform_family?("rhel")
-  template node['bind9']['sysconfig'] do
-    source "named_sysconfig.erb"
-    owner "root"
-    group "root"
-  end
+template node['bind9']['sysconfig'] do
+  source "named_sysconfig_rhel.erb" if platform_family?("rhel")
+  source "named_sysconfig_debian.erb" if platform_family?("debian")
+  owner "root"
+  group "root"
 end
+
 service node['bind9']['service_name'] do
-  supports :status => true, :reload => true, :restart => true
-  action :nothing
+  supports :status => true, :reload => true, :restart => true, :enable => true
+  action :enable
 end

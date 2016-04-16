@@ -67,7 +67,7 @@ template "#{node[:bind9][:dir]}/named.conf.log" do
   notifies :reload, "service[#{bind_service}]"
 end
 
-template "#{node[:bind9][:dir]}/named.conf.channles" do
+template "#{node[:bind9][:dir]}/named.conf.channels" do
   owner node['bind9']['user']
   group node['bind9']['group']
   mode 0644
